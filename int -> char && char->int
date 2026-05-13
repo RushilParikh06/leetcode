@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> separateDigits(vector<int>& nums) {
+        string s;
+
+        for(int i=0;i<size(nums);i++){
+           s += to_string(nums[i]); //int to char => int + '0'(only for single digit int)
+        }
+        //sttring formation complete
+        vector<int> answer(size(s));
+
+        for(int i=0;i<size(s);i++){
+            answer[i] = (s[i]-'0'); //char to int => char-'0'
+        }
+        
+
+        return answer;
+    }
+};
