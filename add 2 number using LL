@@ -32,6 +32,6 @@ public:
         return final->next;
 
         //first the final LL places 0 at head position. then add firhter elements by adding both LL. when all the elements are added final LL becomes [0, sum_1, sum_2, sum_3,....]
-        // so we return final->next to ignore this place holder
+        //so we return final->next to ignore this place holder
     }
 };
