@@ -1,0 +1,37 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* final = new ListNode(0); //new LL with place holder 0
+        ListNode* ptr = final; // ptr pointer pointing to new LL    
+        int carry = 0; //carry varibale
+        while(l1!= nullptr || l2 != nullptr || carry!=0){
+            int val1, val2;
+
+            if(l1!= nullptr) val1 = l1->val; //moving till LL 1 finished and updating value to add
+            else val1=0;
+
+            if(l2!- nullptr) val2 = l2->val; //moving till LL 1 finished and updating value to add
+            else val2 = 0;
+
+            int total_sum = val1+val2+carry; //totla sum
+            carry = sum/10; //carry updates e.g. sum = 15 => carry = 1
+
+            ptr->next = new ListNode(sum%10); //new node which contains sum value, if sum>10 => remainder else sum
+            ptr=ptr->next; //pointing towards next node
+        }
+        return final->next;
+
+        //first the final LL places 0 at head position. then add firhter elements by adding both LL. when all the elements are added final LL becomes [0, sum_1, sum_2, sum_3,....]
+        // so we return final->next to ignore this place holder
+    }
+};
