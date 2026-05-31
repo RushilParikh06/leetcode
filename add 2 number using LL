@@ -23,11 +23,15 @@ public:
             if(l2!- nullptr) val2 = l2->val; //moving till LL 1 finished and updating value to add
             else val2 = 0;
 
-            int total_sum = val1+val2+carry; //totla sum
-            carry = sum/10; //carry updates e.g. sum = 15 => carry = 1
+            int total_sum = val1+val2+carry; //total sum
+            carry = total_sum/10; //carry updates e.g. sum = 15 => carry = 1
 
-            ptr->next = new ListNode(sum%10); //new node which contains sum value, if sum>10 => remainder else sum
+            ptr->next = new ListNode(total_sum%10); //new node which contains sum value, if sum>10 => remainder else sum
             ptr=ptr->next; //pointing towards next node
+
+            if (l1 != nullptr) l1 = l1->next;
+            if (l2 != nullptr) l2 = l2->next;
+        
         }
         return final->next;
 
