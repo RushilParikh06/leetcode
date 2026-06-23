@@ -1,0 +1,31 @@
+/* sliding window approach + hash array*/
+/* time complexity O(N) sace complexity O(256)*/
+
+class Solution {
+public:
+    int max(int a, int b){
+        return a>b?a:b;
+    }
+
+    int lengthOfLongestSubstring(string s) {
+        int n = s.size();
+
+        vector<int> freq_map(256,-1);
+
+        int left=0, right=0;
+        int len=0, maxlen=0;
+        while(right<n){
+            if(freq_map[s[right]]!=-1 && freq_map[s[right]]>=left){
+                left = freq_map[s[right]]+1;
+            }
+            len= right-left+1;
+            maxlen = max(maxlen,len);
+            freq_map[s[right]]=right;
+            right++;
+        }
+
+        return maxlen;     
+        
+    }
+
+};
