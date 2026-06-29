@@ -1,0 +1,41 @@
+APPROACH 1 : BINARY SEARCH
+
+class Solution {
+public:
+    int search(vector<int>& arr) {
+        int n = arr.size();
+        int low = 0;
+        int high = n - 1;
+        int midval = low + (high - low) / 2;
+        while (low <= high) {
+
+            if (arr[midval] < 0) {
+                high = midval - 1;
+            } else {
+                low = midval + 1;
+            }
+            midval = low + (high - low) / 2;
+        }
+        if (low == n)
+            return -1;  
+
+        return low;
+    }
+    int countNegatives(vector<vector<int>>& grid) {
+        int count = 0;
+        int n = grid[0].size();
+        for (int i = 0; i < grid.size(); i++) {
+            int temp = search(grid[i]);
+            if (temp > -1) {
+                count += n - temp;
+            }
+        }
+        return count;
+    }
+};
+
+TIME COMPLEXITY  : O(m logn)
+SPACE COMPLEXITY : O(1)
+
+
+APPROACH 2 : TOP-RIGHT/ BOTTOM-LEFT APPROACH
